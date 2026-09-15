@@ -2,3 +2,7 @@
 .env
 .idea/
 *.bak
+
+# MotorPortalDB.Executor (.NET)
+MotorPortalDB.Executor/bin/
+MotorPortalDB.Executor/obj/
