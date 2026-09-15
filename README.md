@@ -6,7 +6,7 @@ functions/procedures, reporting view, and seed data — the source of truth
 for structure and for the business rules that must never be bypassed
 (batch size cap, lifecycle ordering, CD-balance arithmetic).
 
-Database: `SGInsuranceDB` · Schema: `SGInsurance` · Engine: PostgreSQL 15+
+Database: `motorportal` · Schema: `SGInsurance` · Engine: PostgreSQL 15+
 (verified against 16).
 
 Part of the 4-repo Motor Portal system:
@@ -27,7 +27,7 @@ ER diagram, API reference, setup guide, changelog for the whole system).
 
 ```
 scripts/
-  00_create_database.sql   # creates SGInsuranceDB
+  00_create_database.sql   # creates motorportal
   01_create_schema.sql     # creates schema SGInsurance
   02_tables/                # one file per table (15 files)
   03_constraints_indexes.sql
@@ -51,7 +51,7 @@ This creates the database, schema, all 15 tables with constraints/indexes,
 the PL/pgSQL functions/procedures, the reporting view, and seed data — in
 that order, idempotently (safe to re-run).
 
-To start over: `psql -d SGInsuranceDB -f rollback.sql` (drops the whole
+To start over: `psql -d motorportal -f rollback.sql` (drops the whole
 schema), then re-run `migrate.sh`.
 
 **Seeded login:** username `admin`, password `admin123` (bcrypt-hashed via
