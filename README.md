@@ -104,3 +104,21 @@ expected joined columns.
 - [x] Reporting view `vw_policy_issue_report`
 - [x] Seed data (admin user, products, functions, master policies, sample batches)
 - [x] migrate.sh / rollback.sql verified end-to-end
+
+## Known limitations / not yet implemented
+
+A full cross-repo integration pass (2026-09-15), driving the real Angular
+UI end to end against the live database (including a real
+insufficient-CD-balance payment failure against seeded master policy
+`DL-3010/A/1485553`), found one bug in this repo: `sp_tag_payment` raised
+`Insufficient CD balance for master policy id <numeric surrogate key>`
+instead of the human-readable `MASTER_POLICY_NO` operators actually work
+with. Fixed in `scripts/04_functions/06_sp_tag_payment.sql` to report the
+master policy number plus the balance/required amounts, and applied live
+via `CREATE OR REPLACE PROCEDURE` (no destructive migration was needed —
+`migrate.sh`/`rollback.sql` were not re-run against the live, seeded
+database during this pass to avoid disturbing accumulated test data; a
+fresh environment created via `migrate.sh` will pick up the fix directly
+from the updated script).
+
+No other known integration-level limitations were found in this pass.
