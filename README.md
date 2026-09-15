@@ -21,7 +21,9 @@ ER diagram, API reference, setup guide, changelog for the whole system).
 - PostgreSQL 15+ (developed/verified against 16)
 - Plain PL/pgSQL (no vendor extensions beyond `pgcrypto`, used for bcrypt
   password hashing in seed data)
-- Bash migration scripts (`migrate.sh` / `rollback.sql`)
+- Two equivalent ways to apply the schema: bash (`migrate.sh` / `rollback.sql`)
+  or a .NET console app (`MotorPortalDB.Executor`) — pick whichever fits your
+  environment, both run the exact same SQL files.
 
 ## Folder structure
 
@@ -36,9 +38,13 @@ scripts/
   06_seed_data.sql
 migrate.sh
 rollback.sql
+MotorPortalDB.Executor/    # .NET 8 console app, same effect as migrate.sh
+MotorPortalDB.sln
 ```
 
 ## How to run locally
+
+### Option A — bash
 
 ```bash
 export PGHOST=localhost PGPORT=5432 PGUSER=postgres PGPASSWORD=yourpassword
@@ -54,8 +60,37 @@ that order, idempotently (safe to re-run).
 To start over: `psql -d motorportal -f rollback.sql` (drops the whole
 schema), then re-run `migrate.sh`.
 
-**Seeded login:** username `admin`, password `admin123` (bcrypt-hashed via
-`pgcrypto`).
+### Option B — .NET executor
+
+For environments without bash/psql on `PATH` (or to run the setup as a
+.NET tool/CI step), `MotorPortalDB.Executor` does the same job:
+
+```bash
+cd MotorPortalDB.Executor
+dotnet run
+```
+
+It reads connection settings from `appsettings.json` (defaults:
+`localhost:5432`, user `postgres`, password `postgres`, target database
+`motorportal`), overridable via the same environment variables as
+`migrate.sh` (`PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE`).
+Behavior:
+
+1. Creates the target database if it doesn't exist yet.
+2. Checks whether schema `SGInsurance` already has any tables. If it does,
+   it prints a message and exits without touching anything — safe to run
+   repeatedly (e.g. as a startup step) without re-seeding or duplicating
+   data.
+3. If the schema is empty, it runs every script under `scripts/` in the
+   same order as `migrate.sh` (schema → tables → indexes → functions →
+   views → seed data) against the target database.
+
+There's no equivalent of `rollback.sql` in the executor — use the SQL
+script directly (`psql -d motorportal -f rollback.sql`) if you need to
+reset before re-running the executor.
+
+**Seeded login (either option):** username `admin`, password `admin123`
+(bcrypt-hashed via `pgcrypto`).
 
 ## Entities (15)
 
