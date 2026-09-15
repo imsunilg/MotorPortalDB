@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 -- pgcrypto gives us a real bcrypt hash (compatible with BCrypt.Net-Next on the API side)
 CREATE EXTENSION IF NOT EXISTS pgcrypto;

@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE OR REPLACE FUNCTION fn_calculate_gst(
     p_net_premium NUMERIC,

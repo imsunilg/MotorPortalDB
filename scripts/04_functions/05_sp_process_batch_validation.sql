@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE OR REPLACE PROCEDURE sp_process_batch_validation(p_batch_id BIGINT)
 LANGUAGE plpgsql

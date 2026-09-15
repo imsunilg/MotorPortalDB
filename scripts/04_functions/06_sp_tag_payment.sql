@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE OR REPLACE PROCEDURE sp_tag_payment(p_proposal_id BIGINT)
 LANGUAGE plpgsql

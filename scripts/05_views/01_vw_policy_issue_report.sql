@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE OR REPLACE VIEW vw_policy_issue_report AS
 SELECT

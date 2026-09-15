@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE SEQUENCE IF NOT EXISTS seq_policy_no START WITH 443668109 INCREMENT BY 1;
 

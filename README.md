@@ -6,7 +6,7 @@ functions/procedures, reporting view, and seed data — the source of truth
 for structure and for the business rules that must never be bypassed
 (batch size cap, lifecycle ordering, CD-balance arithmetic).
 
-Database: `motorportal` · Schema: `SGInsurance` · Engine: PostgreSQL 15+
+Database: `motorportal` · Schema: `motorportal` · Engine: PostgreSQL 15+
 (verified against 16).
 
 Part of the 4-repo Motor Portal system:
@@ -30,7 +30,7 @@ ER diagram, API reference, setup guide, changelog for the whole system).
 ```
 scripts/
   00_create_database.sql   # creates motorportal
-  01_create_schema.sql     # creates schema SGInsurance
+  01_create_schema.sql     # creates schema motorportal
   02_tables/                # one file per table (15 files)
   03_constraints_indexes.sql
   04_functions/              # functions & procedures (one file each)
@@ -77,7 +77,7 @@ It reads connection settings from `appsettings.json` (defaults:
 Behavior:
 
 1. Creates the target database if it doesn't exist yet.
-2. Checks whether schema `SGInsurance` already has any tables. If it does,
+2. Checks whether schema `motorportal` already has any tables. If it does,
    it prints a message and exits without touching anything — safe to run
    repeatedly (e.g. as a startup step) without re-seeding or duplicating
    data.

@@ -18,7 +18,7 @@ MotorPortalWEB, MotorPortalDB, MotorPortalDOC).
 
 ## This repo
 
-PostgreSQL 15+ schema `SGInsurance` in database `motorportal`. SQL-first
+PostgreSQL 15+ schema `motorportal` in database `motorportal`. SQL-first
 (not an ORM migration tool) — this is the source of truth for structure,
 constraints, and the business rules that must never be bypassed (batch
 size cap, lifecycle ordering, CD-balance arithmetic). MotorPortalAPI maps

@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE OR REPLACE PROCEDURE sp_advance_batch_status(p_batch_id BIGINT, p_new_status VARCHAR)
 LANGUAGE plpgsql

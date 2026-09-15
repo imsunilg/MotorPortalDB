@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE TABLE IF NOT EXISTS REPORT_LOG (
     REPORT_ID       BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

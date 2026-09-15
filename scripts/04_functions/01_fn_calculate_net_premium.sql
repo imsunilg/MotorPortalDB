@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE OR REPLACE FUNCTION fn_calculate_net_premium(
     p_base_premium  NUMERIC,

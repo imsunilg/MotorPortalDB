@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 -- FK indexes
 CREATE INDEX IF NOT EXISTS ix_master_policy_product_id ON MASTER_POLICY(PRODUCT_ID);

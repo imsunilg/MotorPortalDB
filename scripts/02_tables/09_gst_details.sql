@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE TABLE IF NOT EXISTS GST_DETAILS (
     GST_ID          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

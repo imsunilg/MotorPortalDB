@@ -14,7 +14,7 @@ string username = Environment.GetEnvironmentVariable("PGUSER") ?? config["Databa
 string password = Environment.GetEnvironmentVariable("PGPASSWORD") ?? config["Database:Password"] ?? "postgres";
 string adminDatabase = config["Database:AdminDatabase"] ?? "postgres";
 string targetDatabase = Environment.GetEnvironmentVariable("PGDATABASE") ?? config["Database:TargetDatabase"] ?? "motorportal";
-string schema = config["Database:Schema"] ?? "SGInsurance";
+string schema = config["Database:Schema"] ?? "motorportal";
 
 string scriptsRoot = Path.Combine(baseDir, "scripts");
 if (!Directory.Exists(scriptsRoot))

@@ -1,4 +1,4 @@
-SET search_path TO "SGInsurance";
+SET search_path TO "motorportal";
 
 CREATE TABLE IF NOT EXISTS PRODUCT_MASTER (
     PRODUCT_ID      INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
